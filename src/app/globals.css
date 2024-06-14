@@ -2,26 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+h1,
+h2,
+h3,
+p {
+  @apply text-text-color;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+h1 {
+  font-weight: 600;
+  font-size: 46px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 32px;
+}
+
+@layer components {
+  .background-dark {
+    background-color: hsla(232, 40%, 3%, 1);
+    background-image: radial-gradient(
+        at 88% 100%,
+        rgba(21, 51, 183, 0.2) 0px,
+        transparent 30%
+      ),
+      radial-gradient(at 15% 15%, rgba(60, 67, 93, 0.2) 0px, transparent 50%);
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .btn-primary {
+    @apply bg-accent-color p-[10px] rounded-md text-white shadow-accent-normal hover:shadow-accent-hover hover:bg-accent-color-hover duration-200 disabled:bg-[#1e212f] disabled:shadow-none cursor-pointer disabled:cursor-not-allowed;
+  }
+  .card {
+    @apply bg-background-sec-color p-8 rounded-xl shadow-[0px_-1.6px_0px_0px_rgb(40,45,62),0px_2px_12px_1px_rgba(0,0,0,0.45)];
+  }
+  .card2 {
+    @apply border-[#3C435D] border-solid border-[1px] rounded-[12px] bg-[rgba(15,18,36,0.40)];
+  }
+  .input-text {
+    @apply border-[#3C435D] border-solid border-[1.6px] rounded-[12px] bg-transparent h-[40px] focus:outline-none focus:ring-accent-color-hover focus:ring-2 duration-150 caret-text-color p-6 text-text-color placeholder:text-text-color placeholder:opacity-25 text-center;
+  }
+  .notif {
+    @apply border-red-500 border-solid border-[1px] rounded-[12px] bg-red-700 bg-opacity-25 duration-300
+  }
 }
