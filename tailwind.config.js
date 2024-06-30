@@ -15,8 +15,8 @@ module.exports = {
       colors: {
         'primary-color': '#94a3e4',
         'secondary-color': '#10278b',
-        'accent-color': '#0e3afd',
-        'accent-color-hover': '#355afd',
+        'accent-color': '#3f62fd',
+        'accent-color-hover': '#728bfe',
         'background-color': '#06070e',
         'background-sec-color': '#14161f',
         'text-color': '#e6e8ef',

@@ -1,4 +1,4 @@
-import { UserCircleIcon, InformationCircleIcon } from '@heroicons/react/24/solid'
+import { Profile, InfoCircle } from 'iconsax-react'
 import Link from "next/link";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <div className="w-max mx-auto container flex flex-row gap-x-[40px] items-center">
         <div className="max-w-[325px] min-h-[365px] card flex flex-col justify-between text-center">
           <div className='flex flex-col items-center gap-8'>
-            <UserCircleIcon className="w-[90px] h-[90px] text-text-color"/>
+            <Profile size={90} variant='Bulk' color='#fff'/>
             <div>
               <h2 className='mb-2'>Absen</h2>
               <p className='opacity-55'>Aplikasi absen untuk para member ekskul CHIP</p>
@@ -23,7 +23,7 @@ export default function Home() {
         </div>
         <div className="max-w-[325px] min-h-[365px] card flex flex-col justify-between text-center">
           <div className='flex flex-col items-center gap-8'>
-            <InformationCircleIcon className="w-[90px] h-[90px] text-text-color"/>
+            <InfoCircle size="90" variant='Bulk' color='#fff'/>
             <div>
               <h2 className='mb-2'>Profile</h2>
               <p className='opacity-55'>Kenali satu-satunya ekskul IT di smala</p>
