@@ -35,7 +35,7 @@ h2 {
       radial-gradient(at 15% 15%, rgba(60, 67, 93, 0.2) 0px, transparent 50%);
   }
   .btn-primary {
-    @apply bg-accent-color p-[10px] rounded-[12px] text-white shadow-accent-normal hover:shadow-accent-hover hover:bg-accent-color-hover duration-200 disabled:bg-[#1e212f] disabled:shadow-none cursor-pointer disabled:cursor-not-allowed;
+    @apply bg-accent-color p-[10px] rounded-[12px] text-white shadow-accent-normal hover:shadow-accent-hover hover:bg-accent-color-hover duration-200 disabled:bg-[#1e212f] disabled:shadow-none cursor-pointer disabled:cursor-not-allowed active:bg-accent-color;
   }
   .card {
     @apply bg-background-sec-color p-8 rounded-xl shadow-[0px_-1.6px_0px_0px_rgb(40,45,62),0px_2px_12px_1px_rgba(0,0,0,0.45)];

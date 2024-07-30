@@ -2,30 +2,59 @@
 
 import { Lock1, Profile } from "iconsax-react";
 import { useState } from "react";
+import { useFormStatus } from "react-dom";
+import LoginStat from "./components/LoginStat";
 import Link from "next/link";
-import { submitHandler } from "@/app/actions";
 
-const formStatValue = {
-  sending: "sending",
-  error: "error",
-  unapprove: "unapprove",
-  approve: "approve",
-  input: "input",
-};
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="btn-primary text-text-color w-full px-10 mt-6"
+    >
+      {pending ? "Submitting.." : "Submit"}
+    </button>
+  );
+}
 
 export default function Absen() {
+  const [formStat, setFormStat] = useState(null)
+
   const [username, setUsername] = useState("");
   const handleUsernameChange = (e) => setUsername(e.target.value);
 
   const [password, setPassword] = useState("");
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  async function handleSubmit(e) {
+  async function submitHandler(formData) {
     try {
-      const m = await submitHandler(e);
-      console.log(m);
+      const response = await fetch(
+        "api/login",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+      const responseStat = await response.text()
+      console.log(responseStat)
+      switch (responseStat) {
+        case "valid-success":
+          setFormStat("valid-success")
+          break;
+
+        case "valid-error":
+          setFormStat("valid-error")
+          break;
+
+        default:
+          setFormStat(null)
+          break;
+      }
     } catch (error) {
-      console.log(error.message);
+      console.log("error");
     }
   }
 
@@ -41,7 +70,7 @@ export default function Absen() {
         <div>
           <form
             className="container flex flex-col justify-center items-center gap-2 w-[350px]"
-            action={handleSubmit}
+            action={submitHandler}
             autoComplete="off"
           >
             <div className="flex flex-col justify-center items-center w-full gap-4">
@@ -78,11 +107,8 @@ export default function Absen() {
             >
               Lupa Password?
             </Link>
-            <input
-              type="submit"
-              value="Submit"
-              className="btn-primary text-text-color w-full px-10 mt-6"
-            />
+            <SubmitButton />
+            <LoginStat stat={formStat}/>
           </form>
         </div>
       </div>
